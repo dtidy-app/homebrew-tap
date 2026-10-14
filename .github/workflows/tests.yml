@@ -16,13 +16,11 @@ defaults:
 jobs:
   test-bot:
     strategy:
+      # dtidy is macOS-only. One runner per supported macOS (14 Sonoma, 15 Sequoia, 26), so every
+      # supported version gets a bottle; fail-fast off so one runner's problem doesn't hide the rest.
+      fail-fast: false
       matrix:
-        os: [ macos-26 ]
-        include:
-          - os: ubuntu-latest
-            container:
-              image: ghcr.io/homebrew/brew:main
-              options: --privileged
+        os: [ macos-14, macos-15, macos-26 ]
     runs-on: ${{ matrix.os }}
     container: ${{ fromJSON(toJSON(matrix.container)) }} # zizmor: ignore[unpinned-images]
     permissions:
