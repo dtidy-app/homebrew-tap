@@ -6,6 +6,12 @@ class Dtidy < Formula
   license "GPL-3.0-or-later"
   head "https://github.com/dtidy-app/dtidy-macos.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/dtidy-app/homebrew-tap/releases/download/dtidy-0.1.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6ec3f5fa8182c2ce5a91c65ddafb875872ee2e5c19d805575da9b82d73bded9f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "05c457e30c9a93248134b2aadc7bd494d5d65fa096a9f0f83ae99e4955947fcd"
+  end
+
   depends_on xcode: ["16.0", :build]
   depends_on macos: :sonoma
 
